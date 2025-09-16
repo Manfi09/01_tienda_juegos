@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Busqueda</title>
+</head>
+<body>
+    {% extends 'blog/base.html' %}
+    {% block contenido %}
+    <h2>Buscar Juegos</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Buscar</button>
+    </form>
+
+    {% if resultados %}
+        <h3>Resultados:</h3>
+        <ul>
+            {% for juego in resultados %}
+                <li>{{ juego.titulo }} ({{ juego.categoria }})</li>
+            {% empty %}
+                <li>No se encontraron juegos.</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    {% endblock %}
+</body>
+</html>

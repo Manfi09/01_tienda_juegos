@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tienda de Videojuegos</title>
+</head>
+<body>
+    <h1>Tienda de Videojuegos</h1>
+    <nav>
+        <a href="{% url 'home' %}">Inicio</a> |
+        <a href="{% url 'agregar_juego' %}">Agregar Juego</a> |
+        <a href="{% url 'agregar_categoria' %}">Agregar Categoría</a> |
+        <a href="{% url 'agregar_desarrollador' %}">Agregar Desarrollador</a> |
+        <a href="{% url 'buscar_juego' %}">Buscar Juego</a>
+    </nav>
+    <hr>
+    {% block contenido %}{% endblock %}
+</body>
+</html>
