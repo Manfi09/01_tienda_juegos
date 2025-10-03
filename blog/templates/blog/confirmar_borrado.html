@@ -1,0 +1,15 @@
+
+    {% extends 'blog/base.html' %}
+
+    {% block contenido %}
+        <div class="container mt-5">
+            <h2>¿Estás seguro de que deseas eliminar este juego?</h2>
+            <p><strong>{{ juego.titulo }}</strong></p>
+
+            <form method="post">
+                {% csrf_token %}
+                <a href="{% url 'listar_juegos' %}" class="btn btn-secondary">Cancelar</a>
+                <button type="submit" class="btn btn-danger">Eliminar</button>
+            </form>
+        </div>
+    {% endblock %}

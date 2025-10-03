@@ -5,14 +5,35 @@
 </head>
 <body>
     {% extends 'blog/base.html' %}
+
     {% block contenido %}
-    <h2>{{ titulo }}</h2>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Guardar</button>
-    </form>
+    <div class="container mt-5">
+        <div class="card shadow-sm border-0">
+            <div class="card-body">
+                <h2 class="card-title text-primary mb-4">{{ titulo }}</h2>
+
+                <form method="post">
+                    {% csrf_token %}
+                    {% for field in form %}
+                        <div class="mb-3">
+                            <label class="form-label">{{ field.label }}</label>
+                            {{ field }}
+                            {% if field.errors %}
+                                <div class="text-danger small">
+                                    {{ field.errors }}
+                                </div>
+                            {% endif %}
+                        </div>
+                    {% endfor %}
+
+                    <button type="submit" class="btn btn-success">💾 Guardar</button>
+                    <a href="{% url 'listar_juegos' %}" class="btn btn-secondary">Cancelar</a>
+                </form>
+            </div>
+        </div>
+    </div>
     {% endblock %}
+
 
 </body>
 </html>

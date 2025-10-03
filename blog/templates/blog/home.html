@@ -1,12 +1,8 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Home</title>
-</head>
-<body>
-    {% extends 'blog/base.html' %}
-    {% block contenido %}
-    <p>Bienvenido a la tienda virtual de videojuegos.</p>
-    {% endblock %}
-</body>
-</html>
+{% extends 'blog/base.html' %}
+
+{% block contenido %}
+    <div class="container mt-5">
+        <h1 class="text-center">Bienvenido a la tienda virtual de videojuegos</h1>
+        <p class="text-center text-muted">Explorá, agregá y gestioná tus juegos favoritos.</p>
+    </div>
+{% endblock %}

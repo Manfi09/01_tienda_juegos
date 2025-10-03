@@ -18,3 +18,5 @@ class DesarrolladorForm(forms.ModelForm):
 
 class BusquedaJuegoForm(forms.Form):
     titulo = forms.CharField(label="Buscar juego por título", max_length=100)
+
+

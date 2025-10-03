@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vista de detalle</title>
+</head>
+<body>
+    {% extends 'blog/base.html' %}
+
+    {% block contenido %}
+    <div class="container mt-5">
+        <div class="card shadow-sm border-0">
+            <div class="card-body">
+                <h2 class="card-title text-primary mb-4">🎮 Detalle del Juego</h2>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><strong>Título:</strong> {{ juego.titulo }}</li>
+                    <li class="list-group-item"><strong>Descripción:</strong> {{ juego.descripcion }}</li>
+                    <li class="list-group-item"><strong>Fecha de Lanzamiento:</strong> {{ juego.fecha_lanzamiento }}</li>
+                    <li class="list-group-item"><strong>Categoría:</strong> {{ juego.categoria }}</li>
+                    <li class="list-group-item"><strong>Desarrollador:</strong> {{ juego.desarrollador }}</li>
+                </ul>
+
+                <div class="mt-4 d-flex gap-2">
+                    <a href="{% url 'editar_juego' juego.id %}" class="btn btn-warning">
+                        ✏️ Editar
+                    </a>
+                    <a href="{% url 'borrar_juego' juego.id %}" class="btn btn-danger">
+                        🗑 Eliminar
+                    </a>
+                    <a href="{% url 'listar_juegos' %}" class="btn btn-secondary ms-auto">
+                        ⬅️ Volver a la lista
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endblock %}
+</body>
+</html>

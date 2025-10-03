@@ -11,6 +11,11 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
 from pathlib import Path
+import os
+from django.contrib import admin
+from django.urls import path, include
+from django.conf import settings
+from django.conf.urls.static import static
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -28,6 +33,21 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 
+# Esto es para que las imagenes funcionen
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+
+# Redirección después de login
+LOGIN_REDIRECT_URL = 'home'
+
+# Redirección si intenta acceder sin estar logueado
+LOGIN_URL = 'login'
+
+# Redirección después de logout
+LOGOUT_REDIRECT_URL = 'login'
+
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -39,6 +59,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'blog',
     'blog_juegos',
+    'accounts.apps.AccountsConfig',
+    'ckeditor',
 ]
 
 MIDDLEWARE = [
@@ -56,10 +78,11 @@ ROOT_URLCONF = 'blog_juegos.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
+                'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
